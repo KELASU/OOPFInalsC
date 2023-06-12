@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 class ColorPalette {
     private JPanel palette;
+    // initialize all the color of the color palette
     Colored white = new White();
     Colored red = new Red();
     Colored blue = new Blue();
@@ -16,8 +17,10 @@ class ColorPalette {
     String[] bluer = blue.getHexCode();
     String[] greener = Green.getHexCode();
     String[] blacker = black.getHexCode();
+    // find the total numbers of color and calculate the size needed for the color string array
     int newSize = whiter.length + reder.length + bluer.length + greener.length + blacker.length;
     private String[] colors = new String[newSize];
+    // loop through to add the colors to the color string list
     public ColorPalette(PixelCanvas pixelCanvas) {
         for (int i = 0; i< whiter.length; i++){
             colors[i]=whiter[i];}
@@ -29,8 +32,9 @@ class ColorPalette {
             colors[i+whiter.length+reder.length+bluer.length]=greener[i];}
         for (int i = 0; i< blacker.length; i++){
             colors[i+whiter.length+reder.length+bluer.length+greener.length]=blacker[i];}
-
+        // initialize a new jpanel for the jbuttons or the color palette
         palette = new JPanel(new GridLayout(1, colors.length));
+        // loop to create colored buttons for the purpose of changing the selected color
         for (String colorCode : colors) {
             JButton colorButton = new JButton();
             colorButton.setPreferredSize(new Dimension(30, 30));
@@ -44,7 +48,7 @@ class ColorPalette {
         }
     }
     
-    
+    // getter
     public JPanel getPalette() {
         return palette;
     }
